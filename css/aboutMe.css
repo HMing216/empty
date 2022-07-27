@@ -1,0 +1,98 @@
+header {
+    justify-content: center;
+}
+header .introduce {
+    margin-left: 30px;
+    font-size: 30px;
+    animation: introduce 1s linear infinite alternate;
+}
+@keyframes introduce {
+    0% {
+        color: skyblue;
+        transform: translateY(-5px);
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: green;
+        transform: translateY(5px);
+    }
+}
+main {
+    background-color: rgba(0, 0, 0, .8);
+}
+main .about {
+    width: 800px;
+    margin: 0 auto;
+}
+.about b {
+    color: skyblue;
+}
+.about .info ul,
+.about .skills p,
+.about .item p,
+.about .assessment ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 30px;
+}
+.about .info ul li,
+.about .skills p,
+.about .item p,
+.about .assessment ul li {
+    height: 50px;
+    line-height: 50px;
+}
+.about .info ul li,
+.about .assessment ul li {
+    width: calc(100% / 4);
+}
+.about .info ul li:nth-child(n+5) {
+    width: 50%;
+}
+.about .assessment ul li span {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 5px;
+    margin-left: 10px;
+    background-color: white;
+    border-radius: 3px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.about .assessment ul li span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 0;
+    height: 5px;
+    background-color: green;
+    animation: HTML 1.5s ease-in forwards;
+}
+.about .assessment ul li:nth-child(2) span::after {
+    animation-name: CSS;
+}
+.about .assessment ul li:nth-child(3) span::after {
+    animation-name: JS;
+}
+@keyframes HTML {
+    0%{}
+    100% {
+        width: 90%;
+    }
+}
+@keyframes CSS {
+    0%{}
+    100% {
+        width: 80%;
+    }
+}
+@keyframes JS {
+    0%{}
+    100% {
+        width: 70%;
+    }
+}

@@ -14,20 +14,18 @@ a:hover {
 li {
     list-style: none;
 }
-/* index */
 body {
-    width: 80%;
     min-width: 800px;
+    max-width: 1680px;
     height: 100vh;
     margin: 0 auto;
-    background: black url(../images/indexBg.jpg) no-repeat center center;
+    background: black url(../images/indexBg.jpg) no-repeat top center;
     background-size: 1980px;
     background-attachment: fixed;
     color: white;
     font: 16px/1.5 'Microsoft YaHei';
-    overflow: hidden;
 }
-
+/* 头部 */
 header {
     display: flex;
     justify-content: space-around;

@@ -1,12 +1,15 @@
+header .portrait {
+    box-sizing: content-box;
+    border: 2px solid transparent;
+    transition: all .1s;
+}
+header .portrait:hover {
+    border-color: yellowgreen;
+    transform: translateY(-3px);
+}
 header .portrait a {
     display: block;
     font-size: 0;
-}
-header .portrait {
-    box-sizing: content-box;
-}
-header .portrait:hover {
-    border: 2px solid blueviolet;
 }
 .container {
     position: relative;
