@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #eee;
+            --webkit--scrollbardisplay: none;
+        }
+        .yinYing {
+            box-shadow: rgb(0 0 0 /20%) 0px 2px 1px -1px,
+                        rgb(0 0 0 /14%) 0px 1px 1px 0px,
+                        rgb(0 0 0 /12%) 0px 1px 3px 0px;
+        }
+        .flex {
+            display: flex;
+        }
+        .baiSe {
+            background-color: white;
+        }
+        .flex1 {
+            /* 扩展比例 */
+            flex-grow: 1; 
+            /* 收缩比例 */
+            flex-shrink: 1;
+            /* 初始值 */
+            flex-basis: 0;
+        }
+        .column {
+            flex-direction: column;
+        }
+        .mg8 {
+            margin: 8px;    
+        }
+        .mgr8 {
+            margin-right: 8px;
+        }
+        .mgt8 {
+            margin-top: 8px;
+        }
+        .daoHang {
+            padding: 10px 20px;
+            border-bottom: 1px solid #bbb;
+            color: #666;
+            font-size: 14px;
+        }
+        /* 隐藏滚动条 */
+        .neiRong::-webkit-scrollbar {
+            display: none; /* Chrome Safari */
+        }
+        /* 媒体查询 */
+        @media(max-width:600px) {
+            .ceBian {
+                display: none;
+            }
+            .neiRong {
+                flex-direction: column;
+            }
+            .shuJuQu {
+                flex-direction: column;
+            }
+            .shuJu {
+                margin: 0 0 8px;
+                flex-basis: auto;
+            }
+            .youQu {
+               margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body class="flex">
+    <!-- 侧边栏 -->
+    <div style="width: 200px; z-index: 2;" class="baiSe yinYing ceBian">
+         <!-- 头像栏 -->
+         <div style="padding: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom: 1px solid #bbb;"
+            class="flex">
+            <img src="https://avatars.githubusercontent.com/u/106001259?v=4" 
+                 style="width: 40px; 
+                        height: 40px;
+                        border-radius: 50%;" 
+                 alt="头像">
+            <div style="margin-left: 10px;">空</div>
+        </div>
+        <!-- 导航栏 -->
+        <div class="flex1">
+            <!-- 导航条 -->
+            <div class="daoHang">导航</div>
+            <!-- 导航条 -->
+            <div class="daoHang">导航</div>
+            <!-- 导航条 -->
+            <div class="daoHang">导航</div>
+            <!-- 导航条 -->
+            <div class="daoHang">导航</div>
+        </div>
+    </div>
+    <!-- 主区域 -->
+    <div class="flex1 flex column">
+        <!-- 头部栏 -->
+        <div style="height: 60px; z-index: 1;" class="baiSe yinYing">头部</div>
+        <!-- 内容区 -->
+        <div style="overflow: auto;"  class="flex flex1 neiRong">
+            <!-- 左区 -->
+            <div style="flex: 3;" class="flex column mg8">
+                <!-- 数据区 -->
+                <div class="flex shuJuQu">
+                    <!-- 数据块 -->
+                    <div style="height: 100px;" class="flex1 baiSe yinYing  mgr8 shuJu">数据</div>
+                    <div style="height: 100px;" class="flex1 baiSe yinYing  mgr8 shuJu">数据</div>
+                    <div style="height: 100px;" class="flex1 baiSe yinYing  mgr8 shuJu">数据</div>
+                    <div style="height: 100px;" class="flex1 baiSe yinYing shuJu">数据</div>
+                </div>
+                <!-- 列表区 -->
+                <div class="flex column">
+                    <!-- 列表项 -->
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                    <div style="height: 160px;" class="baiSe yinYing mgt8">列表</div>
+                </div>
+            </div>
+            <!-- 右区 -->
+            <div style="flex: 1" class="flex column mgr8 mgt8 youQu">
+                <!-- 提示区 -->
+                <div style="height: 150px;" class="baiSe yinYing">提示区</div>
+                <!-- 消息区 -->
+                <div style="height: 300px;" class="baiSe yinYing mgt8">消息区</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
