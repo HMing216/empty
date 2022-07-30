@@ -18,9 +18,8 @@ body {
     min-width: 800px;
     max-width: 1680px;
     margin: 0 auto;
-    background: black url(../images/indexBg.jpg) no-repeat top center;
-    background-size: 1980px;
-    background-attachment: fixed;
+    background: url(../images/indexBg.jpg) no-repeat center 100px;
+    background-size: 1980px ;
     color: white;
     font: 16px/1.5 'Microsoft YaHei';
 }
@@ -194,7 +193,6 @@ main .title::after {
     flex-shrink: 0;
     width: 200px;
     height: 200px;
-    margin: 0 10px;
     margin-top: 30px;
     transition: all .2s;
 }
@@ -232,14 +230,14 @@ footer {
     align-items: center;
     height: 50px;
     background-color: rgba(0, 0, 0, .5);
-}
- /* 隐藏滚动条 */
- body::-webkit-scrollbar {
-    display: none; /* Chrome Safari */
-}
-@media(max-width:800px) {
+} 
+@media(max-width: 850px) {
     #gameList {
         flex-wrap: wrap;
         justify-content: space-between;
+        padding: 0 10px;
+    }
+    #gameList li {
+       margin-right: 10px;
     }
 }
