@@ -237,7 +237,7 @@ footer {
         justify-content: space-between;
         padding: 0 10px;
     }
-    #gameList li {
+    #gameList li:nth-child(even-1) {
        margin-right: 10px;
     }
 }
