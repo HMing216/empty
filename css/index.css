@@ -17,7 +17,6 @@ li {
 body {
     min-width: 800px;
     max-width: 1680px;
-    height: 100vh;
     margin: 0 auto;
     background: black url(../images/indexBg.jpg) no-repeat top center;
     background-size: 1980px;
@@ -195,6 +194,8 @@ main .title::after {
     flex-shrink: 0;
     width: 200px;
     height: 200px;
+    margin: 0 10px;
+    margin-top: 30px;
     transition: all .2s;
 }
 #gameList li a {
@@ -231,4 +232,14 @@ footer {
     align-items: center;
     height: 50px;
     background-color: rgba(0, 0, 0, .5);
+}
+ /* 隐藏滚动条 */
+ body::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+}
+@media(max-width:800px) {
+    #gameList {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 }
