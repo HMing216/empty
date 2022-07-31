@@ -4,7 +4,7 @@ header {
 header .introduce {
     margin-left: 30px;
     font-size: 30px;
-    animation: introduce 1s linear infinite alternate;
+    animation: introduce 1s ease-in infinite alternate;
 }
 @keyframes introduce {
     0% {
