@@ -88,5 +88,5 @@ function animate(obj, target, callback) {
         } else {
             obj.style.left = `${obj.offsetLeft + step}px`;
         }
-    }, 15);
+    }, 30);
 }
