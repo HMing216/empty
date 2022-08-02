@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引擎搜索</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: antiquewhite;
+        }
+        .search-box {
+            display: flex;
+            margin-bottom: 40vh;
+            width: 400px;
+            height: 40px;
+        }
+        #search_engine {
+            order: -1;
+            border-color: #aaa;
+            border-right: none;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            outline: none;
+            text-align: center;
+        }
+        .search_input {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+            border: 1px solid #aaa;
+            text-indent: 1em;
+            outline: none;
+        }
+        .search_btn {
+            width: 60px;
+            background-color: rgb(0, 0, 255);
+            border: none;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+        .search_input:focus,
+        .search_input:focus ~ #search_engine {
+            border-color: #666 ;
+        }
+    </style>
+</head>
+<body>
+    <form action="https://www.sogou.com/web?" target="_self" method="get" class="search-box">
+        <input type="text" name="wd" class="search_input">
+        <select id="search_engine"></select>
+        <input type="submit" class="search_btn" value="搜索">
+    </form>
+    <!-- 页脚 -->
+    <footer>
+        <p>
+            当前系统时间：<span class="time"></span> <span>站点素材均来自互联网</span>
+        </p>
+    </footer>
+    <script src="js/getTime.js"></script>
+    <script>
+        const searchBox = document.querySelector('.search-box')
+        const searchInput = document.querySelector('.search-box .search_input');
+        const searchEngine = document.querySelector('.search-box #search_engine');
+        const searchBtn = document.querySelector('.search-box .search_btn');
+        let engines = [
+            {   
+                name: '百度',
+                url: ['https://www.baidu.com/s?ie','wd'],
+            },
+            {   
+                name: '谷歌',
+                url: ['https://www.google.com.hk/search?','q'],
+            },
+            {   
+                name: 'Duck鸭子',
+                url: ['https://duckduckgo.com/?','q'],
+            },
+            {   
+                name: '搜狗',
+                url: ['https://www.sogou.com/web?','query'],
+            },
+            {   
+                name: '360',
+                url: ['https://www.so.com/s?','q'],
+            },
+            {   
+                name: 'bing',
+                url: ['https://cn.bing.com/search?q','q'],
+            },
+            {   
+                name: 'yandex',
+                url: ['https://yandex.com/search/?','text'],
+            },
+            {   
+                name: '头条',
+                url: ['https://so.toutiao.com/search?','keyword'],
+            },
+            {   
+                name: '有道',
+                url: ['https://www.youdao.com/result?','word'],
+            }
+        ];
+        engines.forEach(key => {
+            let option = document.createElement('option');
+            option.value = key.url;
+            option.innerText = key.name
+            searchEngine.appendChild(option);
+        })
+        searchEngine.addEventListener('change', () => {
+            searchInput.name = searchEngine.value.split(',')[1];
+            searchInput.focus();
+        })
+        searchBtn.addEventListener('click', () => {
+            searchBox.action = searchEngine.value.split(',')[0]
+        })
+        document.addEventListener('keydown', (event) => {
+            if(event.key === 'Enter') {
+                searchBtn.click()
+            }
+        })
+    </script>
+</body>
+</html>
