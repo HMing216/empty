@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会飞的按钮</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #btn {
+            position: absolute;
+            top: auto;
+            left: auto;
+            width: 400px;
+            height: 200px;
+            background-color: gold;
+            border-radius: 10px;
+            color: white;
+            font-size: 40px;
+            transition: all .1s;
+            box-shadow: 5px 8px 1px #888;
+        }
+        #btn:active {
+            transform: translateY(3px);
+            box-shadow: none;
+        }
+        #btn.bg1 {
+            background-color: gold;
+        }
+        #btn.bg2 {
+            background-color: skyblue;
+        }
+        #btn.bg3 {
+            background-color: hotpink;
+        }
+        #btn.bg4 {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">0</button>
+    <script>
+        const btn = document.querySelector('#btn');
+        let num = 0;
+        let arr = ['bg1','bg2','bg3','bg4'];
+        btn.onclick = () => {
+            let random = Math.floor(Math.random() * arr.length);
+            let top = Math.floor(Math.random() * window.innerHeight) - btn.offsetHeight;
+            let left = Math.floor(Math.random() * window.innerWidth) - btn.offsetWidth;
+            top = top < 0 ? 0 :  top;
+            left = left < 0 ? 0 :  left;
+            num++;
+            btn.className = arr[random];
+            btn.innerHTML = num + '背景色序号：' + random;
+            btn.style.top = top + 'px';
+            btn.style.left = left + 'px';
+        }
+    </script>
+</body>
+</html>
