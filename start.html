@@ -195,10 +195,11 @@
                 this.createItem();
                 if(localStorage.getItem('link')) {this.getLocalStorageItem();}
             }
+            // 创建
             createItem() {
                 this.collectionBtn.addEventListener('click', () => {
-                    let linkName = prompt('输入名称（max:2）：').slice(0,2);
-                    let link = prompt('输入链接（www.xxxx.com)：');
+                    let linkName = prompt('输入名称(maxLength:2)：').slice(0,2);
+                    let link = prompt('输入链接(www.xxxx.com)：');
                     if(!link) {return}
                     if(!localStorage.getItem('link')) {localStorage.setItem('link', JSON.stringify({'linkName': [linkName], 'link': [link]}))};
                     let JSONlink = JSON.parse(localStorage.getItem('link'));
@@ -208,6 +209,7 @@
                     this.collectionBtn.insertAdjacentHTML('beforebegin', `<li><a href="https://${link}">${linkName}</a></li>`);
                 })
             }
+            // 获取数据库加载到页面
             getLocalStorageItem() {
                 let JSONlink = JSON.parse(localStorage.getItem('link'));
                 for(let i = 0; i < JSONlink.link.length; i++) {
