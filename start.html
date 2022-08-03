@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <form action="https://www.sogou.com/web?" target="_self" method="get" class="search-box">
+    <form action="https://www.baidu.com/s?ie" target="_self" method="get" class="search-box">
         <input type="text" name="wd" class="search_input">
         <select id="search_engine"></select>
         <input type="submit" class="search_btn" value="搜索">
@@ -113,24 +113,26 @@
                 url: ['https://www.youdao.com/result?','word'],
             }
         ];
-        engines.forEach(key => {
+        engines.forEach((key, index) => {
             let option = document.createElement('option');
-            option.value = key.url;
+            option.value = key.url + ',' + index;
             option.innerText = key.name
             searchEngine.appendChild(option);
         })
         searchEngine.addEventListener('change', () => {
             searchInput.name = searchEngine.value.split(',')[1];
+            searchBox.action = searchEngine.value.split(',')[0];
+            localStorage.setItem('name', searchInput.name);
+            localStorage.setItem('action', searchBox.action);
+            localStorage.setItem('id', searchEngine.value.split(',')[2]);
             searchInput.focus();
+            console.log(searchEngine.options)
         })
-        searchBtn.addEventListener('click', () => {
-            searchBox.action = searchEngine.value.split(',')[0]
-        })
-        document.addEventListener('keydown', (event) => {
-            if(event.key === 'Enter') {
-                searchBtn.click()
-            }
-        })
+        if(localStorage.getItem('name') && localStorage.getItem('action')) {
+            searchEngine.options.selectedIndex = localStorage.getItem('id');
+            searchInput.name = localStorage.getItem('name');
+            searchBox.action = localStorage.getItem('action');
+        }
     </script>
 </body>
 </html>
