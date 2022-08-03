@@ -172,18 +172,18 @@
                 this.searchEngine.addEventListener('change', () => {
                     this.searchBox.action = this.searchEngine.value.split(',')[0];
                     this.searchInput.name = this.searchEngine.value.split(',')[1];
-                    localStorage.setItem('id', this.searchEngine.value.split(',')[2]);
-                    localStorage.setItem('action', this.searchBox.action);
-                    localStorage.setItem('name', this.searchInput.name);
+                    localStorage.setItem('engines',
+                    JSON.stringify({'id': this.searchEngine.value.split(',')[2],'action': this.searchBox.action,'name': this.searchInput.name}));
                     this.searchInput.focus();
                 })
             }
             // 搜索数据库
             searchLocalStorage() {
                 if (localStorage.getItem('name') && localStorage.getItem('action') && localStorage.getItem('id')) {
-                    this.searchEngine.options.selectedIndex = localStorage.getItem('id');
-                    this.searchInput.name = localStorage.getItem('name');
-                    this.searchBox.action = localStorage.getItem('action');
+                    let JSONengines = JSON.parse(localStorage.getItem('engines'))
+                    this.searchEngine.options.selectedIndex = JSONengines.id;
+                    this.searchInput.name = JSONengines.name;
+                    this.searchBox.action = JSONengines.action;
                 }
             }
         }
@@ -192,18 +192,29 @@
             constructor(box) {
                 this.collectionBox = box;
                 this.collectionBtn = this.collectionBox.querySelectorAll('li:last-child')[0];
-                this.createItem();   
+                this.createItem();
+                if(localStorage.getItem('link')) {this.getLocalStorageItem();}
             }
             createItem() {
                 this.collectionBtn.addEventListener('click', () => {
                     let linkName = prompt('输入名称（max:2）：').slice(0,2);
-                    let link = prompt('输入链接：');
+                    let link = prompt('输入链接（www.xxxx.com)：');
                     if(!link) {return}
-                    // 需要学习json
-                    // localStorage.setItem('linkNam', linkName);
-                    // localStorage.setItem('link', link);
+                    if(!localStorage.getItem('link')) {localStorage.setItem('link', JSON.stringify({'linkName': [linkName], 'link': [link]}))};
+                    let JSONlink = JSON.parse(localStorage.getItem('link'));
+                    JSONlink.link.push(link);
+                    JSONlink.linkName.push(linkName);
+                    localStorage.setItem('link', JSON.stringify({'linkName': JSONlink.linkName, 'link': JSONlink.link}));
                     this.collectionBtn.insertAdjacentHTML('beforebegin', `<li><a href="https://${link}">${linkName}</a></li>`);
                 })
+            }
+            getLocalStorageItem() {
+                let JSONlink = JSON.parse(localStorage.getItem('link'));
+                for(let i = 0; i < JSONlink.link.length; i++) {
+                    let linkName = JSONlink.linkName[i];
+                    let link = JSONlink.link[i];
+                    this.collectionBtn.insertAdjacentHTML('beforebegin', `<li><a href="https://${link}">${linkName}</a></li>`);
+                }
             }
         }
         const searchBox = document.querySelector('.search-box');
