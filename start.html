@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,20 +12,27 @@
             padding: 0;
             box-sizing: border-box;
         }
+
+        li {
+            list-style: none;
+        }
+
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-around;
             align-items: center;
             height: 100vh;
             background-color: antiquewhite;
         }
+
         .search-box {
             display: flex;
-            margin-bottom: 40vh;
+            margin-top: 10vh;
             width: 400px;
             height: 40px;
         }
+
         #search_engine {
             order: -1;
             border-color: #aaa;
@@ -34,6 +42,7 @@
             outline: none;
             text-align: center;
         }
+
         .search_input {
             flex-grow: 1;
             flex-shrink: 1;
@@ -42,6 +51,7 @@
             text-indent: 1em;
             outline: none;
         }
+
         .search_btn {
             width: 60px;
             background-color: rgb(0, 0, 255);
@@ -51,18 +61,47 @@
             color: white;
             cursor: pointer;
         }
+
         .search_input:focus,
-        .search_input:focus ~ #search_engine {
-            border-color: #666 ;
+        .search_input:focus~#search_engine {
+            border-color: #666;
+        }
+
+        .collection {
+            display: flex;
+            flex-wrap: wrap;
+            width: 500px;
+        }
+
+        .collection li {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            margin-top: 20px;
+            background-color: #666;
+            border-radius: 50%;
+        }
+
+        .collection li:last-child {
+            display: flex;
+            justify-content: center;
+            line-height: 35px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <form action="https://www.baidu.com/s?ie" target="_self" method="get" class="search-box">
         <input type="text" name="wd" class="search_input">
         <select id="search_engine"></select>
         <input type="submit" class="search_btn" value="搜索">
     </form>
+    <ul class="collection">
+        <li>+</li>
+    </ul>
     <!-- 页脚 -->
     <footer>
         <p>
@@ -71,60 +110,78 @@
     </footer>
     <script src="js/getTime.js"></script>
     <script>
-        const searchBox = document.querySelector('.search-box')
-        const searchInput = document.querySelector('.search-box .search_input');
-        const searchEngine = document.querySelector('.search-box #search_engine');
-        const searchBtn = document.querySelector('.search-box .search_btn');
-        let engines = [
-            {   
-                name: '百度',
-                url: ['https://www.baidu.com/s?ie','wd'],
-            },
-            {   
-                name: '谷歌',
-                url: ['https://www.google.com.hk/search?','q'],
-            },
-            {   
-                name: 'Duck鸭子',
-                url: ['https://duckduckgo.com/?','q'],
-            },
-            {   
-                name: '搜狗',
-                url: ['https://www.sogou.com/web?','query'],
-            },
-            {   
-                name: '360',
-                url: ['https://www.so.com/s?','q'],
-            },
-            {   
-                name: 'bing',
-                url: ['https://cn.bing.com/search?q','q'],
-            },
-            {   
-                name: 'yandex',
-                url: ['https://yandex.com/search/?','text'],
+        class Start {
+            constructor(Box) {
+                this.searchBox = Box,
+                this.searchInput = this.searchBox.querySelector('.search_input'),
+                this.searchEngine = this.searchBox.querySelector('#search_engine'),
+                this.searchBtn = this.searchBox.querySelector('.search_btn'),
+                this.engines = [
+                        {
+                            name: '百度',
+                            url: ['https://www.baidu.com/s?ie', 'wd'],
+                        },
+                        {
+                            name: '搜狗',
+                            url: ['https://www.sogou.com/web?', 'query'],
+                        },
+                        {
+                            name: '360',
+                            url: ['https://www.so.com/s?', 'q'],
+                        },
+                        {
+                            name: 'bing',
+                            url: ['https://cn.bing.com/search?q', 'q'],
+                        },
+                        {
+                            name: 'yandex',
+                            url: ['https://yandex.com/search/?', 'text'],
+                        },
+                        {
+                            name: '谷歌',
+                            url: ['https://www.google.com.hk/search?', 'q'],
+                        },
+                        {
+                            name: 'Duck鸭子',
+                            url: ['https://duckduckgo.com/?', 'q'],
+                        }
+                    ];
+                this.init();
+                this.engineChange();
+                this.searchLocalStorage();
             }
-        ];
-        engines.forEach((key, index) => {
-            let option = document.createElement('option');
-            option.value = key.url + ',' + index;
-            option.innerText = key.name
-            searchEngine.appendChild(option);
-        })
-        searchEngine.addEventListener('change', () => {
-            searchInput.name = searchEngine.value.split(',')[1];
-            searchBox.action = searchEngine.value.split(',')[0];
-            localStorage.setItem('name', searchInput.name);
-            localStorage.setItem('action', searchBox.action);
-            localStorage.setItem('id', searchEngine.value.split(',')[2]);
-            searchInput.focus();
-            console.log(searchEngine.options)
-        })
-        if(localStorage.getItem('name') && localStorage.getItem('action')) {
-            searchEngine.options.selectedIndex = localStorage.getItem('id');
-            searchInput.name = localStorage.getItem('name');
-            searchBox.action = localStorage.getItem('action');
+            // 填入数据
+            init() {
+                this.engines.forEach((key, index) => {
+                    let option = document.createElement('option');
+                    option.value = key.url + ',' + index;
+                    option.innerText = key.name;
+                    this.searchEngine.appendChild(option);
+                })
+            }
+            // 引擎改变
+            engineChange() {
+                this.searchEngine.addEventListener('change', () => {
+                    this.searchInput.name = this.searchEngine.value.split(',')[1];
+                    this.searchBox.action = this.searchEngine.value.split(',')[0];
+                    localStorage.setItem('name', this.searchInput.name);
+                    localStorage.setItem('action', this.searchBox.action);
+                    localStorage.setItem('id', this.searchEngine.value.split(',')[2]);
+                    this.searchInput.focus();
+                })
+            }
+            // 搜索数据库
+            searchLocalStorage() {
+                if (localStorage.getItem('name') && localStorage.getItem('action') && localStorage.getItem('id')) {
+                    this.searchEngine.options.selectedIndex = localStorage.getItem('id');
+                    this.searchInput.name = localStorage.getItem('name');
+                    this.searchBox.action = localStorage.getItem('action');
+                }
+            }
         }
+        const searchBox = document.querySelector('.search-box');
+        let start = new Start(searchBox);
     </script>
 </body>
+
 </html>
