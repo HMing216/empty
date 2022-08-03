@@ -81,7 +81,15 @@
             background-color: #666;
             border-radius: 50%;
         }
-
+        .collection li a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-decoration: none;
+        }
         .collection li:last-child {
             display: flex;
             justify-content: center;
@@ -95,7 +103,7 @@
 
 <body>
     <form action="https://www.baidu.com/s?ie" target="_self" method="get" class="search-box">
-        <input type="text" name="wd" class="search_input">
+        <input type="text" name="wd" class="search_input" autocomplete="off">
         <select id="search_engine"></select>
         <input type="submit" class="search_btn" value="搜索">
     </form>
@@ -111,11 +119,11 @@
     <script src="js/getTime.js"></script>
     <script>
         class Start {
-            constructor(Box) {
-                this.searchBox = Box,
-                this.searchInput = this.searchBox.querySelector('.search_input'),
-                this.searchEngine = this.searchBox.querySelector('#search_engine'),
-                this.searchBtn = this.searchBox.querySelector('.search_btn'),
+            constructor(box) {
+                this.searchBox = box;
+                this.searchInput = this.searchBox.querySelector('.search_input');
+                this.searchEngine = this.searchBox.querySelector('#search_engine');
+                this.searchBtn = this.searchBox.querySelector('.search_btn');
                 this.engines = [
                         {
                             name: '百度',
@@ -162,11 +170,11 @@
             // 引擎改变
             engineChange() {
                 this.searchEngine.addEventListener('change', () => {
-                    this.searchInput.name = this.searchEngine.value.split(',')[1];
                     this.searchBox.action = this.searchEngine.value.split(',')[0];
-                    localStorage.setItem('name', this.searchInput.name);
-                    localStorage.setItem('action', this.searchBox.action);
+                    this.searchInput.name = this.searchEngine.value.split(',')[1];
                     localStorage.setItem('id', this.searchEngine.value.split(',')[2]);
+                    localStorage.setItem('action', this.searchBox.action);
+                    localStorage.setItem('name', this.searchInput.name);
                     this.searchInput.focus();
                 })
             }
@@ -179,8 +187,29 @@
                 }
             }
         }
+
+        class Collection {
+            constructor(box) {
+                this.collectionBox = box;
+                this.collectionBtn = this.collectionBox.querySelectorAll('li:last-child')[0];
+                this.createItem();   
+            }
+            createItem() {
+                this.collectionBtn.addEventListener('click', () => {
+                    let linkName = prompt('输入名称（max:2）：').slice(0,2);
+                    let link = prompt('输入链接：');
+                    if(!link) {return}
+                    // 需要学习json
+                    // localStorage.setItem('linkNam', linkName);
+                    // localStorage.setItem('link', link);
+                    this.collectionBtn.insertAdjacentHTML('beforebegin', `<li><a href="https://${link}">${linkName}</a></li>`);
+                })
+            }
+        }
         const searchBox = document.querySelector('.search-box');
-        let start = new Start(searchBox);
+        const collection = document.querySelector('.collection');
+        new Start(searchBox);
+        new Collection(collection);
     </script>
 </body>
 
