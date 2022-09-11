@@ -102,8 +102,8 @@
 </head>
 
 <body>
-    <form action="https://www.baidu.com/s?ie" target="_self" method="get" class="search-box">
-        <input type="text" name="wd" class="search_input" autocomplete="off">
+    <form action="https://cn.bing.com/search?q" target="_self" method="get" class="search-box">
+        <input type="text" name="q" class="search_input" autocomplete="off">
         <select id="search_engine"></select>
         <input type="submit" class="search_btn" value="搜索">
     </form>
@@ -126,6 +126,14 @@
                 this.searchBtn = this.searchBox.querySelector('.search_btn');
                 this.engines = [
                         {
+                            name: 'bing',
+                            url: ['https://cn.bing.com/search?q', 'q'],
+                        },
+                        {
+                            name: '谷歌',
+                            url: ['https://www.google.com.hk/search?', 'q'],
+                        },
+                        {
                             name: '百度',
                             url: ['https://www.baidu.com/s?ie', 'wd'],
                         },
@@ -138,16 +146,8 @@
                             url: ['https://www.so.com/s?', 'q'],
                         },
                         {
-                            name: 'bing',
-                            url: ['https://cn.bing.com/search?q', 'q'],
-                        },
-                        {
                             name: 'yandex',
                             url: ['https://yandex.com/search/?', 'text'],
-                        },
-                        {
-                            name: '谷歌',
-                            url: ['https://www.google.com.hk/search?', 'q'],
                         },
                         {
                             name: 'Duck鸭子',
@@ -170,21 +170,20 @@
             // 引擎改变
             engineChange() {
                 this.searchEngine.addEventListener('change', () => {
-                    this.searchBox.action = this.searchEngine.value.split(',')[0];
-                    this.searchInput.name = this.searchEngine.value.split(',')[1];
-                    localStorage.setItem('engines',
-                    JSON.stringify({'id': this.searchEngine.value.split(',')[2],'action': this.searchBox.action,'name': this.searchInput.name}));
+                    const searchEngine = this.searchEngine.value.split(',');
+                    this.searchBox.action = searchEngine[0];
+                    this.searchInput.name = searchEngine[1];
+                    localStorage.setItem('engines', JSON.stringify({'id': searchEngine[2],'action': this.searchBox.action,'name': this.searchInput.name}));
                     this.searchInput.focus();
                 })
             }
             // 搜索数据库
             searchLocalStorage() {
-                if (localStorage.getItem('name') && localStorage.getItem('action') && localStorage.getItem('id')) {
-                    let JSONengines = JSON.parse(localStorage.getItem('engines'))
-                    this.searchEngine.options.selectedIndex = JSONengines.id;
-                    this.searchInput.name = JSONengines.name;
-                    this.searchBox.action = JSONengines.action;
-                }
+                let JSONengines = JSON.parse(localStorage.getItem('engines'));
+                if(!JSONengines) return;
+                this.searchEngine.options.selectedIndex = JSONengines.id;
+                this.searchInput.name = JSONengines.name;
+                this.searchBox.action = JSONengines.action;
             }
         }
 
