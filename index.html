@@ -1,98 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>网站首页</title>
-     <!-- SEO 网站说明 -->
-	<meta name="description" content="个人网站，记录学习路程--踩过的坑、写过的bug--">
-    <!-- SEO 关键字 -->
-    <meta name="keywords" content="个人网站，反色调网站">
-    <!-- 引入favicon图标 -->
-    <link rel="icon" href="favicon.ico">
-    <!-- css样式 -->
-    <link rel="stylesheet" href="css/index.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css" />
 </head>
 <body>
-    <!-- 页头 -->
-    <header>
-        <div class="portrait">
-            <a href="index.html" title="首页">首页</a>
-        </div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="aboutMe.html">个人介绍</a>
-                </li>
-                <li>
-                    <a href="#">学习资料</a>
-                </li>
-                <li>
-                    <a href="#">娱乐项目</a>
-                </li>
-            </ul>
-        </nav>
-        <p class="introduce">欢迎来到我的个人网站!</p>
-    </header>
-    <!-- 主体 -->
-    <main>
-        <section class="show">
-            <h2 class="title">不知道放什么，放个轮播图</h2>
-            <div id="carousel">
-                <!-- 图片列表 -->
-                <ul id="imgList">
-                    <li><img src="images/carousel-1.webp" alt="图片1"></li>
-                    <li><img src="images/carousel-2.webp" alt="图片2"></li>
-                    <li><img src="images/carousel-3.webp" alt="图片3"></li>
-                    <li><img src="images/carousel-4.webp" alt="图片4"></li>
-                </ul>
-                <!-- 左右按钮 -->
-                <div>
-                    <button class="prev">prev</button>
-                    <button class="next">next</button>
-                </div>
-                <!-- 小圆点 -->
-                <ol id="circleList"></ol>
-            </div>
-        </section>
-        <section class="game">
-            <h2 class="title">远古感小游戏</h2>
-            <ul id="gameList">
-                <li>
-                    <a href="tetris.html">
-                        <img src="images/gamaIcon-1.webp" alt="俄罗斯方块">
-                        <span class="mask">俄罗斯方块</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tetris.html">
-                        <img src="images/gamaIcon-1.webp" alt="俄罗斯方块">
-                        <span class="mask">俄罗斯方块</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tetris.html">
-                        <img src="images/gamaIcon-1.webp" alt="俄罗斯方块">
-                        <span class="mask">俄罗斯方块</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tetris.html">
-                        <img src="images/gamaIcon-1.webp" alt="俄罗斯方块">
-                        <span class="mask">俄罗斯方块</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-    </main>
-    <!-- 页脚 -->
-    <footer>
-        <p>
-            当前系统时间：<span class="time"></span> <span>站点素材均来自互联网</span>
-        </p>
-    </footer>
-    <script src="js/getTime.js"></script>
-    <script src="js/index.js"></script>
+  <h1>Frequently Asked Questions</h1>
+
+  <div class="faq-container">
+
+    <div class="faq active">
+      <h3 class="faq-title">
+        Why shouldn't we trust atoms?
+      </h3>
+
+      <p class="faq-text">
+        They make up everything
+      </p>
+
+      <button class="faq-toggle">
+        <i class="fas fa-chevron-down">
+          <svg t="1667294467346" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2531" width="50" height="50">
+            <path d="M512 608c-6.4 0-19.2 0-25.6-6.4l-128-128c-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0L512 531.2l102.4-102.4c12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8l-128 128C531.2 608 518.4 608 512 608z" p-id="2532" fill="#2c2c2c"></path>
+          </svg>
+        </i>
+
+        <i class="fas fa-times">
+          <svg t="1667294931240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="20" height="20">
+            <path d="M559.786667 512l314.026666-314.026667c13.653333-13.653333 13.653333-34.133333 0-47.786666-13.653333-13.653333-34.133333-13.653333-47.786666 0L512 464.213333 197.973333 150.186667c-13.653333-13.653333-34.133333-13.653333-47.786666 0-13.653333 13.653333-13.653333 34.133333 0 47.786666l314.026666 314.026667-314.026666 314.026667c-13.653333 13.653333-13.653333 34.133333 0 47.786666 13.653333 13.653333 34.133333 13.653333 47.786666 0l314.026667-314.026666 314.026667 314.026666c13.653333 13.653333 34.133333 13.653333 47.786666 0 13.653333-13.653333 13.653333-34.133333 0-47.786666L559.786667 512z" p-id="2558" fill="#fff"></path>
+          </svg>
+        </i>
+      </button>
+    </div>
+
+    <div class="faq">
+      <h3 class="faq-title">
+        What do you call someone with no body and no nose?
+      </h3>
+
+      <p class="faq-text">
+        Nobody knows.
+      </p>
+
+      <button class="faq-toggle">
+        <i class="fas fa-chevron-down">
+          <svg t="1667294467346" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2531" width="50" height="50">
+            <path d="M512 608c-6.4 0-19.2 0-25.6-6.4l-128-128c-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0L512 531.2l102.4-102.4c12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8l-128 128C531.2 608 518.4 608 512 608z" p-id="2532" fill="#2c2c2c"></path>
+          </svg>
+        </i>
+
+        <i class="fas fa-times">
+          <svg t="1667294931240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="20" height="20">
+            <path d="M559.786667 512l314.026666-314.026667c13.653333-13.653333 13.653333-34.133333 0-47.786666-13.653333-13.653333-34.133333-13.653333-47.786666 0L512 464.213333 197.973333 150.186667c-13.653333-13.653333-34.133333-13.653333-47.786666 0-13.653333 13.653333-13.653333 34.133333 0 47.786666l314.026666 314.026667-314.026666 314.026667c-13.653333 13.653333-13.653333 34.133333 0 47.786666 13.653333 13.653333 34.133333 13.653333 47.786666 0l314.026667-314.026666 314.026667 314.026666c13.653333 13.653333 34.133333 13.653333 47.786666 0 13.653333-13.653333 13.653333-34.133333 0-47.786666L559.786667 512z" p-id="2558" fill="#fff"></path>
+          </svg>
+        </i>
+      </button>
+    </div>
+   
+    <div class="faq">
+      <h3 class="faq-title">
+        What's the object-oriented way to become wealthy?
+      </h3>
+
+      <p class="faq-text">
+        Inheritance.
+      </p>
+
+      <button class="faq-toggle">
+        <i class="fas fa-chevron-down">
+          <svg t="1667294467346" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2531" width="50" height="50">
+            <path d="M512 608c-6.4 0-19.2 0-25.6-6.4l-128-128c-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0L512 531.2l102.4-102.4c12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8l-128 128C531.2 608 518.4 608 512 608z" p-id="2532" fill="#2c2c2c"></path>
+          </svg>
+        </i>
+
+        <i class="fas fa-times">
+          <svg t="1667294931240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="20" height="20">
+            <path d="M559.786667 512l314.026666-314.026667c13.653333-13.653333 13.653333-34.133333 0-47.786666-13.653333-13.653333-34.133333-13.653333-47.786666 0L512 464.213333 197.973333 150.186667c-13.653333-13.653333-34.133333-13.653333-47.786666 0-13.653333 13.653333-13.653333 34.133333 0 47.786666l314.026666 314.026667-314.026666 314.026667c-13.653333 13.653333-13.653333 34.133333 0 47.786666 13.653333 13.653333 34.133333 13.653333 47.786666 0l314.026667-314.026666 314.026667 314.026666c13.653333 13.653333 34.133333 13.653333 47.786666 0 13.653333-13.653333 13.653333-34.133333 0-47.786666L559.786667 512z" p-id="2558" fill="#fff"></path>
+          </svg>
+        </i>
+      </button>
+    </div>
+    
+    <div class="faq">
+      <h3 class="faq-title">
+        How many tickles does it take to tickle an octopus?
+      </h3>
+
+      <p class="faq-text">
+        Ten-tickles!
+      </p>
+
+      <button class="faq-toggle">
+        <i class="fas fa-chevron-down">
+          <svg t="1667294467346" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2531" width="50" height="50">
+            <path d="M512 608c-6.4 0-19.2 0-25.6-6.4l-128-128c-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0L512 531.2l102.4-102.4c12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8l-128 128C531.2 608 518.4 608 512 608z" p-id="2532" fill="#2c2c2c"></path>
+          </svg>
+        </i>
+
+        <i class="fas fa-times">
+          <svg t="1667294931240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="20" height="20">
+            <path d="M559.786667 512l314.026666-314.026667c13.653333-13.653333 13.653333-34.133333 0-47.786666-13.653333-13.653333-34.133333-13.653333-47.786666 0L512 464.213333 197.973333 150.186667c-13.653333-13.653333-34.133333-13.653333-47.786666 0-13.653333 13.653333-13.653333 34.133333 0 47.786666l314.026666 314.026667-314.026666 314.026667c-13.653333 13.653333-13.653333 34.133333 0 47.786666 13.653333 13.653333 34.133333 13.653333 47.786666 0l314.026667-314.026666 314.026667 314.026666c13.653333 13.653333 34.133333 13.653333 47.786666 0 13.653333-13.653333 13.653333-34.133333 0-47.786666L559.786667 512z" p-id="2558" fill="#fff"></path>
+          </svg>
+        </i>
+      </button>
+    </div>
+    
+    <div class="faq">
+      <h3 class="faq-title">
+        What is: 1 + 1?
+      </h3>
+
+      <p class="faq-text">
+        Depends on who are you asking.
+      </p>
+
+      <button class="faq-toggle">
+        <i class="fas fa-chevron-down">
+          <svg t="1667294467346" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2531" width="50" height="50">
+            <path d="M512 608c-6.4 0-19.2 0-25.6-6.4l-128-128c-12.8-12.8-12.8-32 0-44.8s32-12.8 44.8 0L512 531.2l102.4-102.4c12.8-12.8 32-12.8 44.8 0s12.8 32 0 44.8l-128 128C531.2 608 518.4 608 512 608z" p-id="2532" fill="#2c2c2c"></path>
+          </svg>
+        </i>
+
+        <i class="fas fa-times">
+          <svg t="1667294931240" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="20" height="20  ">
+            <path d="M559.786667 512l314.026666-314.026667c13.653333-13.653333 13.653333-34.133333 0-47.786666-13.653333-13.653333-34.133333-13.653333-47.786666 0L512 464.213333 197.973333 150.186667c-13.653333-13.653333-34.133333-13.653333-47.786666 0-13.653333 13.653333-13.653333 34.133333 0 47.786666l314.026666 314.026667-314.026666 314.026667c-13.653333 13.653333-13.653333 34.133333 0 47.786666 13.653333 13.653333 34.133333 13.653333 47.786666 0l314.026667-314.026666 314.026667 314.026666c13.653333 13.653333 34.133333 13.653333 47.786666 0 13.653333-13.653333 13.653333-34.133333 0-47.786666L559.786667 512z" p-id="2558" fill="#fff"></path>
+          </svg>
+        </i>
+      </button>
+    </div>
+
+  </div>
+
+  <script src="./js/index.js"></script>
 </body>
 </html>

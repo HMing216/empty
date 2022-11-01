@@ -1,266 +1,99 @@
-/* base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-a {
-    text-decoration: none;
-    color: white;
-}
-a:hover {
-    color: skyblue;
-}
-li {
-    list-style: none;
-}
+
 body {
-    min-width: 800px;
-    max-width: 1680px;
-    margin: 0 auto;
-    background: url(../images/Bg.webp) no-repeat center 100px;
-    background-size: 1980px ;
-    color: white;
-    font: 16px/1.5 'Microsoft YaHei';
-}
-/* 头部 */
-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 100px;
-    background-color: rgba(0, 0, 0, .5);
-}
-header .portrait {
-    width: 80px;
-    height: 80px;
-    background: url(../images/portrait.webp) no-repeat;
-    background-size: cover;
-    border-radius: 50%;
-    transition: all .1s;
-}
-header .portrait:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 9px 2px black;
-}
-header .portrait a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    font-size: 0;
-}
-header nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-header nav ul li {
-    margin: 0 30px;
-}
-header .introduce {
-    display: flex;
-    align-items: center;
-}
-/* 主体 */
-main {
-    height: calc(100vh - 150px);
-    padding: 20px 0;
-    background: rgba(0, 0, 0, .3);
-    overflow: auto;
-}
- /* 隐藏滚动条 */
-main::-webkit-scrollbar {
-    display: none; /* Chrome Safari */
-}
-main .show {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 40px;
-}
-main .show::after {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    left: 10%;
-    right: 10%;
-    display: block;
-    height: 1px;
-    background-color: white;
-}
-main .game {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-main .title {
-    position: relative;
-    width: calc(800px - 80px);
-    height: 40px;
-    margin-bottom: 10px;
-    background-image: linear-gradient(to right, rgba(255, 0, 0, .5), rgba(0, 0, 255, .5));
-    text-align: center;
+  background-color: #f0f0f0;
 }
 
-main .title::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -40px;
-    display: block;
-    border: 20px solid transparent;
-    border-right-color: red;
-    border-bottom-color: red;
-    opacity: .5;
-}
-main .title::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -40px;
-    display: block;
-    border: 20px solid transparent;
-    border-left-color: blue;
-    border-top-color: blue;
-    opacity: .5;
-}
-/* 轮播图 */
-#carousel {
-    position: relative;
-    width: 800px;
-    height: 400px;
-    border-radius: 20px;
-    overflow: hidden;
+h1 {
+  margin: 50px 0 30px;
+  text-align: center;
 }
 
-#imgList {
-    position: absolute;
-    display: flex;
+.faq-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-#imgList li {
-    width: 800px;
-    height: 400px;
+.faq {
+  position: relative;
+  margin: 20px 0;
+  padding: 30px;
+  background-color: transparent;
+  border: 1px solid #9fa4a8;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: .3s ease;
+}
+.faq.active {
+  background-color: rgb(255 255 255 /50%);
+  box-shadow: 0 3px 6px rgb(0 0 0 /10%), 0 3px 6px rgb(0 0 0 /10%);
 }
 
-#imgList li img {
-    width: 100%;
-    height: 100%;
+.faq.active::before,
+.faq.active::after {
+  content: '🗨';
+  color: #2ecc71;
+  font-size: 7rem;
+  position: absolute;
+  opacity: 0.2;
+  top: 10px;
+  left: 20px;
+  z-index: -1;
 }
 
-#carousel button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    border: 0;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, .3);
-    color: white;
-    cursor: pointer;
+.faq.active::before {
+  color: #3498db;
+  top: -10px;
+  left: -10px;
+  transform: rotateY(180deg);
 }
 
-#carousel .prev {
-    left: 0;
+.faq-title {
+  margin-right: 30px;
 }
 
-#carousel .next {
-    right: 0;
+.faq-text {
+  display: none;
+  margin-top: 30px;
 }
 
-#circleList {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
+.faq.active .faq-text {
+  display: block;
 }
 
-#circleList .circle {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, .3);
-    border-radius: 50%;
-    color: white;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    cursor: pointer;
+.faq-toggle {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
 }
 
-#circleList .circle.active {
-    background-color: rgba(255, 255, 255, .5);
-    color: black;
+.faq-toggle:focus {
+  outline: none;
 }
-/* game */
-#gameList {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    text-align: center;
+
+.faq-toggle .fa-times {
+  display: none;
 }
-#gameList li {
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: 200px;
-    height: 200px;
-    margin-top: 50px;
-    transition: all .2s;
+
+.faq.active .faq-toggle .fa-times {
+  display: block;
 }
-#gameList li a {
-    position: relative;
-    display: block;
-    height: 100%;
-    border-radius: 10%;
-    overflow: hidden;
+
+.faq.active .faq-toggle .fa-chevron-down {
+  display: none;
 }
-#gameList li a img {
-    width: 100%;
-    height: 100%;
-}
-#gameList li a .mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-    background: rgba(0, 0, 0, .5);
-    border-radius: 10%;
-    opacity: 0;
-    transition: all .4s;
-}
-#gameList li:hover {
-    transform: translateY(-5px);
-}
-#gameList li a:hover .mask {
-    height: 100%;
-    opacity: 1;
-}
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    background-color: rgba(0, 0, 0, .5);
-} 
-@media(max-width: 850px) {
-    #gameList {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 0 10px;
-    }
-    #gameList li {
-       margin-right: 10px;
-    }
-    #gameList li a .mask {
-        height: 100%;
-        opacity: .5;
-    }
+
+.faq.active .faq-toggle {
+  background-color: #9fa4a8;
 }
